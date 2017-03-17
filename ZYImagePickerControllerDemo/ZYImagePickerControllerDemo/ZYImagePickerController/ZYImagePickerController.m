@@ -222,7 +222,7 @@
     //我们之前就已经利用进行时方法 把我们自己的控制器ZYImagePickerController 赋值给了PUCollectionView的代理对象中。而这里就是PUCollectionView的代理对象 调用的代理方法  所以在这里直接self就是PUCollectionView的代理对象 然后就可以取出我们自己的写的控制器 然后就能获取到当前的数据了
     ZYImagePickerController *pickerController = (ZYImagePickerController *)objc_getAssociatedObject(self, ZYImagePickerControllerKey);
 
-    if (!pickerController) {
+    if (pickerController) {
         //调用pickerController的内部方法 传入当前cell的indexPath 判断此次的cell是否已经存在 选择的数组中
         if ([pickerController indexPathIsInAllIndexPathsArrWithIndexPath:indexPath] != NSIntegerMax) {
             //这个cell的indexPath 已经存在了 选择的indexPath数组中 也就是这个cell 是被选择了的 需要添加标记
